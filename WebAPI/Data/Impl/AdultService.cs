@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 using WebAPI.Models;
 using WebAPI.Persistence;
 
@@ -24,24 +25,26 @@ namespace WebAPI.Data.Impl
             _fileContext.SaveChanges();
         }
 
-        public IList<Adult> GetAdults()
+        public async Task<IList<Adult>> GetAdultsAsync()
         {
             List<Adult> tmp = new List<Adult>(_adults);
             return tmp;
         }
 
-        public void AddAdult(Adult adult)
+        public async Task<Adult> AddAdultAsync(Adult adult)
         {
             adult.Id = _adults.Max(a => a.Id) + 1;
             _adults.Add(adult);
             SaveChanges();
+            return adult;
         }
 
-        public void RemoveAdult(int adultId)
+        public async Task<Adult> RemoveAdultAsync(int adultId)
         {
             Adult toRemove = _adults.First(a => a.Id == adultId);
             _adults.Remove(toRemove);
             SaveChanges();
+            return toRemove;
         }
     }
 }

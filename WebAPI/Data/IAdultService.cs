@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using WebAPI.Models;
 
 namespace WebAPI.Data
 {
     public interface IAdultService
     {
-        IList<Adult> GetAdults();
-        void AddAdult(Adult adult);
+        Task<IList<Adult>> GetAdultsAsync();
+        Task<Adult> AddAdultAsync(Adult adult);
 
-        void RemoveAdult(int adultId);
+        Task<Adult> RemoveAdultAsync(int adultId);
     }
 }
