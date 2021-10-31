@@ -181,17 +181,17 @@
   },
   {
     "JobTitle": {
-      "JobTitle": "Web developer",
-      "Salary": 1000
+      "JobTitle": "Actress",
+      "Salary": 35670
     },
     "Id": 13,
-    "FirstName": "Lia",
-    "LastName": "Cicati",
-    "HairColor": "Brown",
-    "EyeColor": "Brown",
-    "Age": 20,
-    "Weight": 44,
-    "Height": 167,
+    "FirstName": "Sandra",
+    "LastName": "Bullock",
+    "HairColor": "Blond",
+    "EyeColor": "Hazel",
+    "Age": 30,
+    "Weight": 60,
+    "Height": 179,
     "Sex": "F"
   }
 ]

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WebAPI.Models;
 
 namespace WebAPI.Data.Impl
@@ -37,7 +38,7 @@ namespace WebAPI.Data.Impl
         }
 
 
-        public User ValidateUser(string userName, string password)
+        public async Task<User> ValidateUser(string userName, string password)
         {
             User first = users.FirstOrDefault(user => user.UserName.Equals(userName));
             if (first == null)

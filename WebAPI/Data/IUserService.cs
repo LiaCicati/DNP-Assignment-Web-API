@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
 using WebAPI.Models;
 
 namespace WebAPI.Data
 {
     public interface IUserService
     {
-        User ValidateUser(string userName, string password);
+        Task<User> ValidateUser(string userName, string password);
     }
 }
