@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("controller")]
+    [Route("adults")]
     public class AdultsController : ControllerBase
     {
         private IAdultService _adultService;
@@ -49,7 +50,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult<Adult>> RemoveAdult([FromQuery] int adultId)
+        [Route("{adultId:int}")]
+        public async Task<ActionResult<Adult>> RemoveAdult([FromRoute] int adultId)
 
         {
             try
