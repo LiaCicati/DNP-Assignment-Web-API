@@ -17,6 +17,21 @@ namespace WebAPI.Controllers
             this._userService = userService;
         }
 
+        [HttpPost]
+        public async Task<ActionResult<User>> AddUser([FromBody] User user)
+        {
+            try
+            {
+                User added = await _userService.AddUserAsync(user);
+                return Created($"/{added.UserName}", added);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
+        }
+
         [HttpGet]
         public async Task<ActionResult<User>> ValidateUser([FromQuery] string username, [FromQuery] string password)
         {
@@ -28,7 +43,7 @@ namespace WebAPI.Controllers
             catch (Exception e)
             {
                 return BadRequest(e.Message);
-            } 
+            }
         }
     }
 }
