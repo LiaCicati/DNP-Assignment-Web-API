@@ -31,8 +31,8 @@ namespace WebAPI
         {
 
             services.AddControllers();
-            services.AddSingleton<FileContext>();
-            services.AddScoped<IUserService, InMemoryUserService>();
+            services.AddDbContext<AdultsDbContext>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAdultService, AdultService>();
             services.AddSwaggerGen(c =>
             {

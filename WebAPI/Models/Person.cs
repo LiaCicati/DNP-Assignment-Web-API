@@ -4,6 +4,7 @@ namespace WebAPI.Models
 {
     public class Person
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "First Name Field is Required")]
