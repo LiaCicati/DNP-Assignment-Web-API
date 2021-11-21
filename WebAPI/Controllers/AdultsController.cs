@@ -12,11 +12,11 @@ namespace WebAPI.Controllers
     [Route("adults")]
     public class AdultsController : ControllerBase
     {
-        private IAdultService _adultService;
+        private IAdultRepository _adultRepository;
 
-        public AdultsController(IAdultService adultService)
+        public AdultsController(IAdultRepository adultRepository)
         {
-            this._adultService = adultService;
+            this._adultRepository = adultRepository;
         }
 
         [HttpGet]
@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                IList<Adult> adults = await _adultService.GetAdultsAsync();
+                IList<Adult> adults = await _adultRepository.GetAdultsAsync();
                 return Ok(adults);
             }
             catch (Exception e)
@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                Adult added = await _adultService.AddAdultAsync(adult);
+                Adult added = await _adultRepository.AddAdultAsync(adult);
                 return Created($"/{added.Id}", added);
             }
             catch (Exception e)
@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                Adult removedAdult = await _adultService.RemoveAdultAsync(adultId);
+                Adult removedAdult = await _adultRepository.RemoveAdultAsync(adultId);
                 return Ok(removedAdult);
             }
             catch (Exception e)

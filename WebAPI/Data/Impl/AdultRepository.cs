@@ -1,8 +1,7 @@
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using WebAPI.Models;
@@ -10,12 +9,11 @@ using WebAPI.Persistence;
 
 namespace WebAPI.Data.Impl
 {
-    public class AdultService : IAdultService
-
+    public class AdultRepository :IAdultRepository
     {
         private AdultsDbContext _ctx;
-
-        public AdultService(AdultsDbContext context)
+        
+        public AdultRepository(AdultsDbContext context)
         {
             this._ctx = context;
         }
@@ -44,5 +42,7 @@ namespace WebAPI.Data.Impl
 
             return toDelete;
         }
+        
+        
     }
 }

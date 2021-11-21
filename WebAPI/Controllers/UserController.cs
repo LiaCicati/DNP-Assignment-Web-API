@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
 using WebAPI.Models;
+using WebAPI.Service;
 
 namespace WebAPI.Controllers
 {
@@ -11,10 +12,12 @@ namespace WebAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private IUserRepository _userRepository;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService,IUserRepository userRepository)
         {
             this._userService = userService;
+            this._userRepository = userRepository;
         }
 
         [HttpPost]
@@ -22,7 +25,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                User added = await _userService.AddUserAsync(user);
+                User added = await _userRepository.AddUserAsync(user);
                 return Created($"/{added.UserName}", added);
             }
             catch (Exception e)

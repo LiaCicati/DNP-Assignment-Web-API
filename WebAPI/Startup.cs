@@ -14,6 +14,8 @@ using Microsoft.OpenApi.Models;
 using WebAPI.Data;
 using WebAPI.Data.Impl;
 using WebAPI.Persistence;
+using WebAPI.Service;
+using WebAPI.Service.Impl;
 
 namespace WebAPI
 {
@@ -33,7 +35,9 @@ namespace WebAPI
             services.AddControllers();
             services.AddDbContext<AdultsDbContext>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IAdultService, AdultService>();
+            // services.AddScoped<IAdultService, AdultService>();
+            services.AddScoped<IAdultRepository, AdultRepository>();
+            services.AddScoped<IUserRepository, UserRepository >();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });

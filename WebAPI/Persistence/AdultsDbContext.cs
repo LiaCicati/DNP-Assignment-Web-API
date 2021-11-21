@@ -10,7 +10,7 @@ namespace WebAPI.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source = C:\Users\Lia Cicati\DNP-Assignment-2\DNP-Assignment-Web-API\WebAPI\adults.db");
+            optionsBuilder.UseSqlite(@"Data Source = C:\Users\Loredana Cicati\DNP-Assignment-Web-API\WebAPI\adults.db");
         }
     }
 }
